@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <title>Dashboard - KnowYourTribe</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header__container">
+        <a href="index.html" class="header__logo logo">KnowYourTribe</a>
+        <div class="header__navigation">
+          <div class="header__menu menu">
+            <nav class="menu__body">
+              <ul class="menu__list">
+                <li class="menu__item"><a href="index.html" class="menu__link">Home</a></li>
+                <li class="menu__item"><a href="about.html" class="menu__link">About</a></li>
+                <li class="menu__item"><a href="services.html" class="menu__link">Services</a></li>
+                <li class="menu__item"><a href="contact.html" class="menu__link">Contact</a></li>
+                <li class="menu__item"><a href="#" id="logoutBtn" class="menu__link">Logout</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header__actions actions-header">
+            <button type="button" class="menu__icon icon-menu"><span></span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="dashboard">
+        <div class="dashboard__container">
+          <!-- Welcome Section -->
+          <div class="dashboard__welcome">
+            <h1 class="dashboard__greeting">Hello, <span id="userName">User</span>!</h1>
+            <p class="dashboard__subtitle">Welcome to your personalized dashboard</p>
+            <div class="dashboard__quick-stats">
+              <div class="quick-stat">
+                <span class="quick-stat__icon">👥</span>
+                <span class="quick-stat__value" id="totalConnections">0</span>
+                <span class="quick-stat__label">Total Connections</span>
+              </div>
+              <div class="quick-stat">
+                <span class="quick-stat__icon">📈</span>
+                <span class="quick-stat__value" id="growthRate">0%</span>
+                <span class="quick-stat__label">Growth Rate</span>
+              </div>
+              <div class="quick-stat">
+                <span class="quick-stat__icon">🎯</span>
+                <span class="quick-stat__value" id="matchScore">0%</span>
+                <span class="quick-stat__label">Match Score</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="dashboard__stats">
+            <div class="stat-card">
+              <h3>Community Reach</h3>
+              <div class="stat-value" id="reachValue">0</div>
+              <div class="stat-chart">
+                <canvas id="reachChart"></canvas>
+              </div>
+              <div class="stat-trend" id="reachTrend">
+                <span class="trend-icon">↑</span>
+                <span class="trend-value">0%</span>
+                <span class="trend-period">vs last month</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <h3>Engagement Rate</h3>
+              <div class="stat-value" id="engagementValue">0%</div>
+              <div class="stat-chart">
+                <canvas id="engagementChart"></canvas>
+              </div>
+              <div class="stat-trend" id="engagementTrend">
+                <span class="trend-icon">↑</span>
+                <span class="trend-value">0%</span>
+                <span class="trend-period">vs last month</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <h3>Target Matches</h3>
+              <div class="stat-value" id="matchesValue">0</div>
+              <div class="stat-chart">
+                <canvas id="matchesChart"></canvas>
+              </div>
+              <div class="stat-trend" id="matchesTrend">
+                <span class="trend-icon">↑</span>
+                <span class="trend-value">0%</span>
+                <span class="trend-period">vs last month</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Analytics -->
+          <div class="dashboard__analytics">
+            <div class="analytics-card">
+              <h2>Community Insights</h2>
+              <div class="insights-grid">
+                <div class="insight-item">
+                  <span class="insight-icon">👥</span>
+                  <div class="insight-content">
+                    <h3>Active Members</h3>
+                    <p>2,500+ daily active users</p>
+                    <div class="insight-trend positive">
+                      <span class="trend-icon">↑</span>
+                      <span class="trend-value">+15%</span>
+                      <span class="trend-period">this week</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="insight-item">
+                  <span class="insight-icon">💬</span>
+                  <div class="insight-content">
+                    <h3>Conversations</h3>
+                    <p>1,200+ daily interactions</p>
+                    <div class="insight-trend positive">
+                      <span class="trend-icon">↑</span>
+                      <span class="trend-value">+8%</span>
+                      <span class="trend-period">this week</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="insight-item">
+                  <span class="insight-icon">📊</span>
+                  <div class="insight-content">
+                    <h3>Content Reach</h3>
+                    <p>50,000+ monthly views</p>
+                    <div class="insight-trend positive">
+                      <span class="trend-icon">↑</span>
+                      <span class="trend-value">+12%</span>
+                      <span class="trend-period">this month</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="analytics-card">
+              <h2>Top Matches</h2>
+              <div class="matches-list">
+                <div class="match-item">
+                  <div class="match-info">
+                    <span class="match-icon">🏢</span>
+                    <div class="match-details">
+                      <h3>TechStart Inc.</h3>
+                      <p>95% match score</p>
+                    </div>
+                  </div>
+                  <button class="match-action">Connect</button>
+                </div>
+                <div class="match-item">
+                  <div class="match-info">
+                    <span class="match-icon">🏢</span>
+                    <div class="match-details">
+                      <h3>InnovateHub</h3>
+                      <p>92% match score</p>
+                    </div>
+                  </div>
+                  <button class="match-action">Connect</button>
+                </div>
+                <div class="match-item">
+                  <div class="match-info">
+                    <span class="match-icon">🏢</span>
+                    <div class="match-details">
+                      <h3>GrowthLabs</h3>
+                      <p>88% match score</p>
+                    </div>
+                  </div>
+                  <button class="match-action">Connect</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="dashboard__actions">
+            <button class="action-button" onclick="window.location.href='community-analysis.html'">
+              <span class="action-icon">📊</span>
+              <span class="action-text">Analyze Community</span>
+            </button>
+            <button class="action-button" onclick="window.location.href='audience-matching.html'">
+              <span class="action-icon">🤝</span>
+              <span class="action-text">Find Matches</span>
+            </button>
+            <button class="action-button" onclick="window.location.href='engagement-tools.html'">
+              <span class="action-icon">💬</span>
+              <span class="action-text">Engagement Tools</span>
+            </button>
+            <button class="action-button" onclick="window.location.href='content-strategy.html'">
+              <span class="action-icon">📝</span>
+              <span class="action-text">Content Strategy</span>
+            </button>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="dashboard__activity">
+            <h2>Recent Activity</h2>
+            <div class="activity-feed" id="activityFeed">
+              <!-- Activity items will be dynamically added here -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__container">
+        <a href="#" class="footer__policy">Privacy Policy – Terms & Conditions</a>
+        <a href="" class="footer__logo logo">KnowYourTribe</a>
+        <div class="footer__copyright">Copyright © 2025 KnowYourTribe – All Rights Reserved</div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/dashboard.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html> 

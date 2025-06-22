@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <title>Community Analysis - KnowYourTribe</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header__container">
+        <a href="index.html" class="header__logo logo">KnowYourTribe</a>
+        <div class="header__navigation">
+          <div class="header__menu menu">
+            <nav class="menu__body">
+              <nav class="menu__body">
+                <ul class="menu__list">
+                  <li class="menu__item"><a href="index.html" class="menu__link">Home</a></li>
+                  <li class="menu__item"><a href="about.html" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="services.html" class="menu__link">Services</a></li>
+                  <li class="menu__item"><a href="contact.html" class="menu__link">Contact</a></li>
+                  <li class="menu__item"><a href="login.html" class="menu__link">Login/Signup</a></li>
+                </ul>
+                <a href="#" class="actions-header__button">Join Now</a>
+              </nav>
+          </div>
+          <div class="header__actions actions-header">
+            <button type="button" class="menu__icon icon-menu"><span></span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="page">
+      <section class="page__main main main_community main_pages">
+        <div class="main__container main__container_pages">
+          <h1 class="main__title">Community Analysis</h1>
+          <div class="main__text main__text_pages">
+            Deep insights into community demographics, interests, and behaviors
+          </div>
+        </div>
+      </section>
+
+      <section class="community-analysis">
+        <div class="community-analysis__container">
+          <div class="community-analysis__grid">
+            <!-- Demographics Chart -->
+            <div class="community-analysis__card">
+              <h2 class="community-analysis__title">Demographics Overview</h2>
+              <div class="community-analysis__chart">
+                <canvas id="demographicsChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Engagement Metrics -->
+            <div class="community-analysis__card">
+              <h2 class="community-analysis__title">Engagement Metrics</h2>
+              <div class="community-analysis__chart">
+                <canvas id="engagementChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Interest Distribution -->
+            <div class="community-analysis__card">
+              <h2 class="community-analysis__title">Interest Distribution</h2>
+              <div class="community-analysis__chart">
+                <canvas id="interestsChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Growth Trends -->
+            <div class="community-analysis__card">
+              <h2 class="community-analysis__title">Growth Trends</h2>
+              <div class="community-analysis__chart">
+                <canvas id="growthChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Insights -->
+          <div class="community-analysis__insights">
+            <h2 class="community-analysis__title">Key Insights</h2>
+            <div class="community-analysis__insights-grid">
+              <div class="community-analysis__insight">
+                <h3>Active Users</h3>
+                <p>2.5M+ monthly active users</p>
+                <div class="community-analysis__trend positive">
+                  <span class="trend-icon">↑</span>
+                  <span class="trend-value">+12%</span>
+                  <span class="trend-period">vs last month</span>
+                </div>
+              </div>
+              <div class="community-analysis__insight">
+                <h3>Engagement Rate</h3>
+                <p>68% average engagement</p>
+                <div class="community-analysis__trend positive">
+                  <span class="trend-icon">↑</span>
+                  <span class="trend-value">+5%</span>
+                  <span class="trend-period">vs last month</span>
+                </div>
+              </div>
+              <div class="community-analysis__insight">
+                <h3>Growth Rate</h3>
+                <p>45% YoY growth</p>
+                <div class="community-analysis__trend positive">
+                  <span class="trend-icon">↑</span>
+                  <span class="trend-value">+8%</span>
+                  <span class="trend-period">vs last year</span>
+                </div>
+              </div>
+              <div class="community-analysis__insight">
+                <h3>Retention Rate</h3>
+                <p>92% monthly retention</p>
+                <div class="community-analysis__trend positive">
+                  <span class="trend-icon">↑</span>
+                  <span class="trend-value">+3%</span>
+                  <span class="trend-period">vs last month</span>
+                </div>
+              </div>
+              <div class="community-analysis__insight">
+                <h3>Content Creation</h3>
+                <p>1.2M+ posts monthly</p>
+                <div class="community-analysis__trend positive">
+                  <span class="trend-icon">↑</span>
+                  <span class="trend-value">+15%</span>
+                  <span class="trend-period">vs last month</span>
+                </div>
+              </div>
+              <div class="community-analysis__insight">
+                <h3>User Satisfaction</h3>
+                <p>4.8/5 average rating</p>
+                <div class="community-analysis__trend positive">
+                  <span class="trend-icon">↑</span>
+                  <span class="trend-value">+0.2</span>
+                  <span class="trend-period">vs last month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <a href="#" class="footer__policy">Privacy Policy – Terms & Conditions</a>
+        <a href="" class="footer__logo logo">KnowYourTribe</a>
+        <div class="footer__copyright">Copyright © 2025 KnowYourTribe – All Rights Reserved</div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/script.js"></script>
+  <script>
+    // Demographics Chart
+    const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
+    new Chart(demographicsCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['18-24', '25-34', '35-44', '45-54', '55+'],
+        datasets: [{
+          data: [30, 35, 20, 10, 5],
+          backgroundColor: [
+            '#2997ff',
+            '#4dabff',
+            '#7bc2ff',
+            '#a9d9ff',
+            '#d7f0ff'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#ffffff'
+            }
+          }
+        }
+      }
+    });
+
+    // Engagement Chart
+    const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+    new Chart(engagementCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Engagement Rate',
+          data: [65, 68, 72, 70, 75, 78],
+          borderColor: '#2997ff',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#ffffff'
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#ffffff'
+            }
+          },
+          x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#ffffff'
+            }
+          }
+        }
+      }
+    });
+
+    // Interests Chart
+    const interestsCtx = document.getElementById('interestsChart').getContext('2d');
+    new Chart(interestsCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Tech', 'Business', 'Education', 'Health', 'Lifestyle'],
+        datasets: [{
+          label: 'Interest Level',
+          data: [85, 75, 60, 45, 40],
+          backgroundColor: '#2997ff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#ffffff'
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#ffffff'
+            }
+          },
+          x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#ffffff'
+            }
+          }
+        }
+      }
+    });
+
+    // Growth Chart
+    const growthCtx = document.getElementById('growthChart').getContext('2d');
+    new Chart(growthCtx, {
+      type: 'radar',
+      data: {
+        labels: ['User Growth', 'Engagement', 'Content', 'Reach', 'Conversion'],
+        datasets: [{
+          label: 'Current Performance',
+          data: [85, 75, 90, 80, 70],
+          backgroundColor: 'rgba(41, 151, 255, 0.2)',
+          borderColor: '#2997ff',
+          pointBackgroundColor: '#2997ff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#ffffff'
+            }
+          }
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#ffffff'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html> 
